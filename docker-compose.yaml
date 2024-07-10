@@ -1,0 +1,21 @@
+version: "3.0"
+
+services:
+  app:
+    container_name: php_10_07_app
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+    working_dir: /app
+    volumes:
+      - ./app:/app
+  webserver:
+    container_name: php_10_07_server
+    build:
+      context: .
+      dockerfile: .docker/server/Dockerfile
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports: 
+      - "8080:80"
